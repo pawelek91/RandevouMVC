@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RandevouMVC.Models.ApiQueryProvider;
+using RandevouMVC.Models.Authentication;
 
 namespace RandevouMVC
 {
@@ -29,7 +31,12 @@ namespace RandevouMVC
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            services.AddDistributedMemoryCache();
+            services.AddSession();
 
+
+            services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
+            services.AddSingleton<IAuthenticationManager, AuthenticationManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -48,6 +55,7 @@ namespace RandevouMVC
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

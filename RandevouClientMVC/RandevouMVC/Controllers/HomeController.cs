@@ -15,6 +15,7 @@ namespace RandevouMVC.Controllers
             return View();
         }
 
+        [AuthorizedAction]
         public IActionResult Privacy()
         {
             return View();

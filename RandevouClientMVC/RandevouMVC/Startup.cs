@@ -32,10 +32,13 @@ namespace RandevouMVC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDistributedMemoryCache();
-            services.AddSession();
+            services.AddSession(opts =>
+            {
+                opts.Cookie.IsEssential = true;
+            });
 
 
-            services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
+                services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
             services.AddSingleton<IAuthenticationManager, AuthenticationManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

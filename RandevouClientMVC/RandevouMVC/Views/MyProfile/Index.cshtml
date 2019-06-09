@@ -1,0 +1,89 @@
+﻿@model  RandevouMVC.ViewModels.MyProfileViewModel
+
+    <form asp-controller="MyProfile" asp-action="update" method="post" class="mt-3">
+        <div class="form-group row">
+            <label asp-for="UserDto.DisplayName" class="col-sm-2 col-form-label">Nazwa</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDto.DisplayName" class="form-control" placeholder="Użytkownik">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="UserDto.BirthDate" class="col-sm-2 col-form-label">Data urodzin</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDto.BirthDate" class="form-control" placeholder="Data urodzin">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserDto.DisplayName" class="col-sm-2 col-form-label">Płeć</label>
+            <div class="col-sm-10">
+                <select asp-for="UserDto.Gender" class="custom-select mr-sm-2"
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()"></select>
+            </div>
+
+           
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.City" class="col-sm-2 col-form-label">Miasto</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.City" class="form-control" placeholder="Miasto">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.Region" class="col-sm-2 col-form-label">Województwo</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.Region" class="form-control" placeholder="Województwo">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.Width" class="col-sm-2 col-form-label">Wzrost</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.Width" class="form-control" placeholder="Wzrost">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.Heigth" class="col-sm-2 col-form-label">Waga</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.Heigth" class="form-control" placeholder="Waga">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.Tattos" class="col-sm-2 col-form-label">Tatuaże</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.Tattos" class="form-control" placeholder="Tatuaże">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.HairColor" class="col-sm-2 col-form-label">Kolor włosów</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.HairColor" class="form-control" placeholder="Kolor włosów">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.EyesColor" class="col-sm-2 col-form-label">Kolor oczu</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.EyesColor" class="form-control" placeholder="Kolor oczu">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="UserDetails.Interests" class="col-sm-2 col-form-label">Zainteresowania</label>
+            <div class="col-sm-10">
+                <input asp-for="UserDetails.Interests" class="form-control" placeholder="Zainteresowania">
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+    </form>

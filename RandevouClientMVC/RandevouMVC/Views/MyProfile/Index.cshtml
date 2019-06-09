@@ -8,9 +8,9 @@
             </div>
         </div>
         <div class="form-group row">
-            <label asp-for="UserDto.BirthDate" class="col-sm-2 col-form-label">Data urodzin</label>
+            <label asp-for="BirthDate" class="col-sm-2 col-form-label">Data urodzin♥</label>
             <div class="col-sm-10">
-                <input asp-for="UserDto.BirthDate" class="form-control" placeholder="Data urodzin">
+                <input  asp-for="BirthDate" class="form-control">
             </div>
         </div>
 
@@ -65,14 +65,14 @@
         <div class="form-group row">
             <label asp-for="UserDetails.HairColor" class="col-sm-2 col-form-label">Kolor włosów</label>
             <div class="col-sm-10">
-                <input asp-for="UserDetails.HairColor" class="form-control" placeholder="Kolor włosów">
+                <select asp-for="UserDetails.HairColor" asp-items="Model.AllHairColors"></select>
             </div>
         </div>
 
         <div class="form-group row">
             <label asp-for="UserDetails.EyesColor" class="col-sm-2 col-form-label">Kolor oczu</label>
             <div class="col-sm-10">
-                <input asp-for="UserDetails.EyesColor" class="form-control" placeholder="Kolor oczu">
+                <select asp-for="UserDetails.EyesColor" asp-items="Model.AllEyesColors"></select>
             </div>
         </div>
 

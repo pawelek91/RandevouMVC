@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RandevouMVC.Models.ApiQueryProvider;
 using RandevouMVC.Models.Authentication;
+using RandevouMVC.Models.Common;
 using RandevouMVC.Models.MyProfile;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace RandevouMVC
             services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
             services.AddSingleton<IAuthenticationManager, AuthenticationManager>();
             services.AddSingleton<IMyProfileManager, MyProfileManager>();
+            services.AddSingleton<IDictionaryItemsManager, DictionaryItemsManager>();
         }
     }
 }

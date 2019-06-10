@@ -18,8 +18,8 @@ namespace RandevouMVC.ViewModels
 
         public InterestViewModel[] InterestsDictionary { get; set; }
 
-        public List<SelectListItem> AllHairColors { get; set; }
-        public List<SelectListItem> AllEyesColors { get; set; }
+        public List<SelectListItem> HairColorsDictionary { get; set; }
+        public List<SelectListItem> EyesColorsDictionary { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{yyyy-MM-dd}")]

@@ -11,5 +11,7 @@ namespace RandevouMVC.Models.Common
         DictionaryItemDto[] GetAllHairsColors();
         DictionaryItemDto[] GetAllEyesColors();
         DictionaryItemDto[] GetAllInterests();
+
+        DictionaryItemDto EmptyElement { get; }
     }
 }

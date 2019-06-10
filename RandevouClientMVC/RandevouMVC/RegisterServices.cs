@@ -3,6 +3,7 @@ using RandevouMVC.Models.ApiQueryProvider;
 using RandevouMVC.Models.Authentication;
 using RandevouMVC.Models.Common;
 using RandevouMVC.Models.MyProfile;
+using RandevouMVC.Models.UsersFinder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,11 @@ namespace RandevouMVC
         public static void Register(IServiceCollection services)
         {
             services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
+
             services.AddSingleton<IAuthenticationManager, AuthenticationManager>();
             services.AddSingleton<IMyProfileManager, MyProfileManager>();
             services.AddSingleton<IDictionaryItemsManager, DictionaryItemsManager>();
+            services.AddSingleton<IUsersFinderManager, UsersFinderManager>();
         }
     }
 }

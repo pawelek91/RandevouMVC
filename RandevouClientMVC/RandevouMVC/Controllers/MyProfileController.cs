@@ -23,24 +23,29 @@ namespace RandevouMVC.Controllers
         public ViewResult Index()
         {
             var vm = _manager.GetMyProfileVM();
+         
+            var emptyElement = new SelectListItem
+            {
+                Text = _dictManager.EmptyElement.DisplayName,
+                Value = ""
+            };
 
-            if (vm.UserDto.BirthDate.HasValue)
-                vm.BirthDate = vm.UserDto.BirthDate.Value;
 
-            vm.AllHairColors = _dictManager.GetAllHairsColors().Select(x => new SelectListItem
+            vm.HairColorsDictionary = _dictManager.GetAllHairsColors().Select(x => new SelectListItem
             {
                 Text = x.DisplayName,
                 Value = x.Id.ToString(),
                 Selected = x.Id == vm.UserDetails.HairColor
             }).ToList();
+            vm.HairColorsDictionary.Add(emptyElement);
 
-            vm.AllEyesColors = _dictManager.GetAllEyesColors().Select(x => new SelectListItem
+            vm.EyesColorsDictionary = _dictManager.GetAllEyesColors().Select(x => new SelectListItem
              {
                  Text = x.DisplayName,
                  Value = x.Id.ToString(),
                  Selected = x.Id == vm.UserDetails.EyesColor
              }).ToList();
-
+            vm.EyesColorsDictionary.Add(emptyElement);
 
 
 
@@ -55,13 +60,7 @@ namespace RandevouMVC.Controllers
         [HttpPost]
         public IActionResult Update(MyProfileViewModel vm)
         {
-            vm.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
-            vm.UserDto.BirthDate = vm.BirthDate;
-            vm.UserDetails.Interests = vm.InterestsDictionary
-                .Where(x=>x.Selected)
-                .Select(x => x.Id).ToArray();
             _manager.SetProfileData(vm);
-
             return RedirectToAction("Index");
         }
     }

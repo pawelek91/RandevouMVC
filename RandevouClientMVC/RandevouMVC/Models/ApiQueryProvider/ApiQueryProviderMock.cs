@@ -152,7 +152,7 @@ namespace RandevouMVC.Models.ApiQueryProvider
                 Gender = 'M',
                 DisplayName = "testowy",
                 Name = "testowy",
-                BirthDate = DateTime.Now.AddDays(-1),
+                BirthDate = DateTime.Now.AddYears(-30),
             };
         }
 
@@ -160,7 +160,7 @@ namespace RandevouMVC.Models.ApiQueryProvider
         {
             return new UsersDto
             {
-                BirthDate = DateTime.Now.AddDays(-1),
+                BirthDate = DateTime.Now.AddYears(-30),
                 DisplayName = "some test user",
                 Name = "test",
                 Id = 1,

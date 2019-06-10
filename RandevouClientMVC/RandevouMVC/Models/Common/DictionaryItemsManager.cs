@@ -13,6 +13,13 @@ namespace RandevouMVC.Models.Common
         {
         }
 
+        public DictionaryItemDto EmptyElement => new DictionaryItemDto
+        {
+            DisplayName = "-",
+            Name = "None",
+            Id = null,
+        };
+
         public DictionaryItemDto[] GetAllEyesColors()
         {
             return _queryProvider.GetAllEyesColors();

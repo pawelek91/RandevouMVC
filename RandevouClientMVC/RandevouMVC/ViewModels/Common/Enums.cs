@@ -13,4 +13,14 @@ namespace RandevouMVC.ViewModels
         [Display(Name = "Kobieta")]
         Female
     }
+
+    public enum Tatoos
+    {
+        [Display(Name="-")]
+        Null,
+        [Display(Name="Brak")]
+        Not,
+        [Display(Name="Tak")]
+        Has,
+    }
 }

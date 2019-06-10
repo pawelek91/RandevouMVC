@@ -1,0 +1,21 @@
+﻿@model  IEnumerable<RandevouMVC.ViewModels.UsersFinder.UserViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Płeć</th>
+            <th scope="col">Wiek</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in Model)
+        {
+        <tr>
+            <td>@user.DisplayName</td>
+            <td>@user.Gender</td>
+            <td>@user.Age</td>
+        </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,122 @@
+﻿@model RandevouMVC.ViewModels.UserFinderViewModel
+
+    <form asp-controller="UsersFinder" asp-action="Search" method="post" class="mt-3">
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.Name" class="col-sm-2 col-form-label">Nazwa</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.Name" class="form-control" placeholder="Użytkownik">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.AgeFrom" class="col-sm-2 col-form-label">Wiek od</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.AgeFrom" class="form-control">
+            </div>
+            <label asp-for="QueryModel.SearchQuery.AgeTo" class="col-sm-2 col-form-label">Wiek do</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.AgeTo" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.Gender" class="col-sm-2 col-form-label">Płeć</label>
+            <div class="col-sm-10">
+                <select asp-for="QueryModel.Gender" class="custom-select mr-sm-2"
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()"></select>
+            </div>
+
+
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.City" class="col-sm-2 col-form-label">Miasto</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.City" class="form-control" placeholder="Miasto">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.Region" class="col-sm-2 col-form-label">Województwo</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.Region" class="form-control" placeholder="Województwo">
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.WidthFrom" class="col-sm-2 col-form-label">Wzrost od</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.WidthFrom" class="form-control">
+            </div>
+            <label asp-for="QueryModel.SearchQuery.WidthTo" class="col-sm-2 col-form-label">Wzrost do</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.WidthTo" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.HeightFrom" class="col-sm-2 col-form-label">Waga od</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.HeightFrom" class="form-control">
+            </div>
+            <label asp-for="QueryModel.SearchQuery.HeightTo" class="col-sm-2 col-form-label">Waga do</label>
+            <div class="col-sm-10">
+                <input asp-for="QueryModel.SearchQuery.HeightTo" class="form-control">
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.Tatoos" class="col-sm-2 col-form-label">Tatuaże</label>
+            <div class="col-sm-10">
+                <select asp-for="QueryModel.Tatoos" class="custom-select mr-sm-2"
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Tatoos>()">
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.HairColor" class="col-sm-2 col-form-label">Kolor włosów</label>
+            <div class="col-sm-10">
+                <select asp-for="QueryModel.SearchQuery.HairColor" asp-items="Model.QueryModel.HairColorsDictionary"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.EyesColor" class="col-sm-2 col-form-label">Kolor oczu</label>
+            <div class="col-sm-10">
+                <select asp-for="QueryModel.SearchQuery.EyesColor" asp-items="Model.QueryModel.EyesColorsDictionary"></select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="QueryModel.SearchQuery.InterestIds" class="col-sm-2 col-form-label">Zainteresowania</label>
+            <div class="col-sm-10">
+                <ul>
+                    <li>
+                        @for (int i = 0; i < Model.QueryModel.InterestsDictionary.Count(); i++)
+                        {
+                            <input type="checkbox" asp-for="@Model.QueryModel.InterestsDictionary[i].Selected" />
+                            <label asp-for="@Model.QueryModel.InterestsDictionary[i].Id">@Model.QueryModel.InterestsDictionary[i].DisplayName</label>
+                            <input type="hidden" asp-for="@Model.QueryModel.InterestsDictionary[i].Id" />
+                            <input type="hidden" asp-for="@Model.QueryModel.InterestsDictionary[i].DisplayName" />
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Wyszukaj</button>
+            </div>
+        </div>
+
+    </form>

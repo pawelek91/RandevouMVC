@@ -67,7 +67,7 @@ namespace RandevouMVC.Controllers
         {
             vm.Dto.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
             _authManager.Register(vm.Dto);
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
         }
 
 

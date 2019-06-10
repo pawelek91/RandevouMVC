@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.ViewModels.UsersFinder
 {
-    public class UserViewModel
+    public class UserBasicViewModel
     {
         public int Id { get; set; }
         public string DisplayName { get; set; }
@@ -15,12 +15,12 @@ namespace RandevouMVC.ViewModels.UsersFinder
 
         public int Age { get; set; }
 
-        public UserViewModel()
+        public UserBasicViewModel()
         {
 
         }
 
-        public UserViewModel(UsersDto userDto)
+        public UserBasicViewModel(UsersDto userDto)
         {
             Id = userDto.Id.Value;
             DisplayName = userDto.DisplayName;

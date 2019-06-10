@@ -26,6 +26,7 @@ namespace RandevouMVC.ViewModels
         [AllowedDateRange]
         public DateTime BirthDate { get; set; }
 
+        [Display(Name="Płeć")]
         public Gender Gender { get; set; }
     }
 }

@@ -8,7 +8,10 @@ namespace RandevouMVC.ViewModels
 {
     public class UserLoginViewModel
     {
+        [Display(Name="Login")]
         public string Login { get; set; }
+
+        [Display(Name = "Hasło")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 

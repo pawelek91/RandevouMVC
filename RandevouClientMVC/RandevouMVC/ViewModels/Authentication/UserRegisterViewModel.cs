@@ -9,13 +9,16 @@ namespace RandevouMVC.ViewModels
 {
     public class UserRegisterViewModel
     {
-        public UserComplexViewModel Dto { get; set; }
+        public UserCreateViewModel Dto { get; set; }
 
+        [Display(Name="Płeć")]
         public Gender Gender { get; set; }
     }
 
-    public class UserComplexViewModel : UserComplexDto
+    public class UserCreateViewModel : UserComplexDto
     {
+        [Display(Name = "Hasło")]
+        [Required(ErrorMessage = "Hasło jest wymagane")]
         [DataType(DataType.Password)]
         public new string Password { get; set; }
     }

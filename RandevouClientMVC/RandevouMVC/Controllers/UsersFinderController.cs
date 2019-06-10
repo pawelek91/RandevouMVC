@@ -60,7 +60,7 @@ namespace RandevouMVC.Controllers
         public ViewResult Search(UserFinderViewModel vm)
         {
             var result = _manager.FindUsers(vm.QueryModel);
-            var resultVm = result.Select(x => new UserViewModel(x)).ToList();
+            var resultVm = result.Select(x => new UserBasicViewModel(x)).ToList();
             return View(resultVm);
         }
     }

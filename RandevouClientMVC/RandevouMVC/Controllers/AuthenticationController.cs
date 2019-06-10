@@ -65,6 +65,12 @@ namespace RandevouMVC.Controllers
         [HttpPost]
         public IActionResult Register(UserRegisterViewModel vm)
         {
+            if (string.IsNullOrWhiteSpace(vm.Dto.UserDto.Name))
+            {
+                ModelState.AddModelError("Creating account", "Nazwa użytkownika jest wymagna");
+                return View("Register", vm);
+            }
+
             vm.Dto.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
             _authManager.Register(vm.Dto);
             return RedirectToAction("Index");

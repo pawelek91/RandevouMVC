@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using RandevouMVC.Models.Common;
 using RandevouMVC.Models.MyProfile;
 using RandevouMVC.ViewModels;
+using RandevouMVC.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,19 +44,24 @@ namespace RandevouMVC.Controllers
 
 
 
-            //interests...
-            vm.AllInterests = _dictManager.GetAllInterests();
- 
+            vm.InterestsDictionary = _dictManager.GetAllInterests()
+                                .Select(x =>
+                                new InterestViewModel(x, vm.UserDetails.Interests.Any(id => id == x.Id))).ToArray();
+             
 
             return View(vm);
         }
 
+        [HttpPost]
         public IActionResult Update(MyProfileViewModel vm)
         {
             vm.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
             vm.UserDto.BirthDate = vm.BirthDate;
-
+            vm.UserDetails.Interests = vm.InterestsDictionary
+                .Where(x=>x.Selected)
+                .Select(x => x.Id).ToArray();
             _manager.SetProfileData(vm);
+
             return RedirectToAction("Index");
         }
     }

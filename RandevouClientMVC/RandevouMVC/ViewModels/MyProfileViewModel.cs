@@ -16,9 +16,8 @@ namespace RandevouMVC.ViewModels
         public UsersDto UserDto { get; set; }
         public UserDetailsDto UserDetails { get; set; }
 
-        public DictionaryItemDto[] UserIterests { get; set; }
+        public InterestViewModel[] InterestsDictionary { get; set; }
 
-        public DictionaryItemDto[] AllInterests { get; set; }
         public List<SelectListItem> AllHairColors { get; set; }
         public List<SelectListItem> AllEyesColors { get; set; }
 

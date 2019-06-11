@@ -3,6 +3,7 @@ using RandevouMVC.Models.ApiQueryProvider;
 using RandevouMVC.Models.Authentication;
 using RandevouMVC.Models.Common;
 using RandevouMVC.Models.MyProfile;
+using RandevouMVC.Models.Users;
 using RandevouMVC.Models.UsersFinder;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace RandevouMVC
             services.AddSingleton<IMyProfileManager, MyProfileManager>();
             services.AddSingleton<IDictionaryItemsManager, DictionaryItemsManager>();
             services.AddSingleton<IUsersFinderManager, UsersFinderManager>();
+            services.AddSingleton<IUserManager, UsersManager>();
         }
     }
 }

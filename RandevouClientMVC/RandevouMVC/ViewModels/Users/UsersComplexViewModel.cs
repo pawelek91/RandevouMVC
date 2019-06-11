@@ -11,5 +11,10 @@ namespace RandevouMVC.ViewModels.Users
         public UserBasicViewModel User { get; set; }
         public UserDetailsViewModel Details { get; set; }
 
+        public UserComplexViewModel()
+        {
+            Details = new UserDetailsViewModel();
+        }
+
      }
 }

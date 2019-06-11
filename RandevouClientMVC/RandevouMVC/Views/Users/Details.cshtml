@@ -1,4 +1,56 @@
-﻿@model  RandevouMVC.ViewModels.Users.UserComplexViewModel
-
+﻿@model RandevouMVC.ViewModels.Users.UserComplexViewModel
 <h2>@Model.User.DisplayName</h2>
+
+
+<table class="table table-striped">
+    <tr>
+        <th>Płeć</th>
+        <td>@Model.User.Gender</td>
+    </tr>
+
+    <tr>
+        <th>Wiek</th>
+        <td>@Model.User.Age</td>
+    </tr>
+
+    <tr>
+        <th>Wzrost</th>
+        <td>@Model.Details.Width</td>
+    </tr>
+
+    <tr>
+        <th>Waga</th>
+        <td>@Model.Details.Weight</td>
+    </tr>
+
+    <tr>
+        <th>Kolor oczu</th>
+        <td>@Model.Details.EyesColor</td>
+    </tr>
+
+    <tr>
+        <th>Kolor włosów</th>
+        <td>@Model.Details.HairColor</td>
+    </tr>
+
+    <tr>
+        <th>Zainteresowania</th>
+        <td>
+                @for (int i = 0; i < Model.Details.Interests.Count(); i++)
+                {
+
+                    if (i < Model.Details.Interests.Count() - 1)
+                    {
+                        @string.Format("{0},", Model.Details.Interests[i])
+                    }
+                    else
+                    {
+                        @Model.Details.Interests[i]
+                    }
+
+                }
+        </td>
+    </tr>
+
+</table>
 

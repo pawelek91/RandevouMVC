@@ -1,0 +1,23 @@
+﻿@model IEnumerable<RandevouMVC.ViewModels.Messages.SpeakersViewModel>
+
+    <table class="table table-striped">
+        <tbody>
+            @foreach (var speak in Model)
+            {
+            <tr>
+                <td>
+                    <div>@speak.SpeakerName</div>
+                    <div>@speak.MessageShortContent</div>
+                    <div>
+                      
+                        <a asp-controller="Messages" asp-action="Details" asp-route-id="@speak.SpeakerId" 
+                             class="btn btn-primary" role="button">
+                            Przejdź
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+   

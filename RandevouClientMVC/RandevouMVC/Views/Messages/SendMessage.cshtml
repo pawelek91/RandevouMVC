@@ -1,0 +1,10 @@
+﻿@model RandevouMVC.ViewModels.Messages.SendMessageViewModel
+@{ 
+    var x = Model.SpeakerId;
+}
+    <form asp-controller="Messages" asp-action="SendMessage" method="post">
+        <input type="hidden" value="@Model.SpeakerId" asp-for="SpeakerId" />
+        <textarea asp-for="Content" class="form-control" rows="4" placeholder="Treść wiadomości...">
+        </textarea>
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+    </form>

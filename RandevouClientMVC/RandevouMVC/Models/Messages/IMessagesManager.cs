@@ -10,5 +10,6 @@ namespace RandevouMVC.Models.Messages
     {
         IEnumerable<SpeakersViewModel> GetAllConversations();
         IEnumerable<ConversationViewModel> GetConversation(int speakerId);
+        void SendMessage(int receiverId, string content);
     }
 }

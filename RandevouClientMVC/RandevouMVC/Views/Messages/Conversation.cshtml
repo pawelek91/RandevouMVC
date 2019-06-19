@@ -1,0 +1,15 @@
+﻿@model IEnumerable<RandevouMVC.ViewModels.Messages.ConversationViewModel>
+    <h2>Conversation</h2>
+    <table class="table table-hover">
+        <tbody>
+            @foreach (var speak in Model)
+            {
+                <tr>
+                    <td>
+                        <div>@speak.SendDate @speak.SenderName</div>
+                        <div>@speak.Message</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

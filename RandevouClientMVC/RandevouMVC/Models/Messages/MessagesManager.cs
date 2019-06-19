@@ -38,5 +38,10 @@ namespace RandevouMVC.Models.Messages
                     SenderName = x.SenderName,
                 });
         }
+
+        public void SendMessage(int receiverId, string content)
+        {
+            _queryProvider.SendMessage(receiverId, content);
+        }
     }
 }

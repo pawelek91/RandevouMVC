@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RandevouMVC.Models.Messages;
+using RandevouMVC.ViewModels.Messages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,29 @@ namespace RandevouMVC.Controllers
             return View(vm);
         }
 
+   
         [HttpGet]
-        public ViewResult Details(int speakerId)
+        public ViewResult Details(int id)
         {
-            var vm = _manager.GetConversation(speakerId);
-            return View(vm);
+            ViewBag.SpeakerId = id;
+            return View();
         }
+
+        [HttpGet]
+        public PartialViewResult Conversation(int id)
+        {
+            var vm = _manager.GetConversation(id);
+            return PartialView(vm);
+        }
+
+
+        [HttpPost]
+        public IActionResult SendMessage(SendMessageViewModel vm)
+        {
+            _manager.SendMessage(vm.SpeakerId, vm.Content);
+            return RedirectToAction("Details", new { id = vm.SpeakerId });
+        }
+
+
     }
 }

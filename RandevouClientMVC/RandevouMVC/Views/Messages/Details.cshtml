@@ -1,15 +1,22 @@
 ﻿@model IEnumerable<RandevouMVC.ViewModels.Messages.ConversationViewModel>
 
-<table class="table table-hover">
-    <tbody>
-        @foreach (var speak in Model)
-        {
-            <tr>
-                <td>
-                    <div>@speak.SendDate @speak.SenderName</div>
-                    <div>@speak.Message</div>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+<h2>Request: @ViewBag.Request</h2>
+
+<div class="col-md-6" id="conversationDiv">
+    
+    <script type="text/javascript">
+        setInterval("$('#conversationDiv').load('../../Messages/Conversation/@ViewBag.SpeakerId')", 2000);
+    </script>
+   
+</div>
+
+<div>
+    @{
+        await Html.RenderPartialAsync("SendMessage",
+            new RandevouMVC.ViewModels.Messages.SendMessageViewModel
+            {
+                SpeakerId = ViewBag.SpeakerId,
+            });
+    }
+</div>

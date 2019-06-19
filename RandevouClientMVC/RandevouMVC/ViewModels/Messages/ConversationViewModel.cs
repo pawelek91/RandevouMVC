@@ -13,5 +13,7 @@ namespace RandevouMVC.ViewModels.Messages
         public string ReceiverName { get; set; }
         public string Message { get; set; }
         public DateTime SendDate { get; set; }
+
+        public int Request { get; set; }
     }
 }

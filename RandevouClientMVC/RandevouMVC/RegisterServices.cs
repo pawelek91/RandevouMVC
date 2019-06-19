@@ -2,6 +2,7 @@
 using RandevouMVC.Models.ApiQueryProvider;
 using RandevouMVC.Models.Authentication;
 using RandevouMVC.Models.Common;
+using RandevouMVC.Models.Friends;
 using RandevouMVC.Models.Messages;
 using RandevouMVC.Models.MyProfile;
 using RandevouMVC.Models.Users;
@@ -25,6 +26,7 @@ namespace RandevouMVC
             services.AddSingleton<IUsersFinderManager, UsersFinderManager>();
             services.AddSingleton<IUserManager, UsersManager>();
             services.AddSingleton<IMessagesManager, MessagesManager>();
+            services.AddSingleton<IFriendsManager, FriendsManager>();
         }
     }
 }

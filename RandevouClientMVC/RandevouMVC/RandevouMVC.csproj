@@ -15,7 +15,7 @@
 
   <ItemGroup>
     <Reference Include="RandevouApiCommunication">
-      <HintPath>C:\Users\pawel\source\repos\RandevouApiCommunication\RandevouApiCommunication\bin\Debug\netstandard2.0\RandevouApiCommunication.dll</HintPath>
+      <HintPath>..\..\..\RandevouApiQuery\RandevouApiCommunication\bin\Release\netstandard2.0\RandevouApiCommunication.dll</HintPath>
     </Reference>
   </ItemGroup>
 

@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<RandevouMVC.ViewModels.Messages.ConversationViewModel>
 
 
-<h2>Request: @ViewBag.Request</h2>
+    <div class="col-md-6" id="conversationDiv">
 
-<div class="col-md-6" id="conversationDiv">
-    
-    <script type="text/javascript">
-        setInterval("$('#conversationDiv').load('../../Messages/Conversation/@ViewBag.SpeakerId')", 2000);
-    </script>
-   
-</div>
+        <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script language="javascript" type="text/javascript">
+            reloadChat();
+            var timeout = setInterval(reloadChat, 2000);
+            function reloadChat() {
+
+                $('#conversationDiv').load('/Messages/Conversation/@ViewBag.SpeakerId');
+            }
+        </script>
+    </div>
 
 <div>
     @{

@@ -1,7 +1,8 @@
 ﻿@model RandevouMVC.ViewModels.Users.UserComplexViewModel
 <h2>@Model.User.DisplayName</h2>
 
-
+<a asp-controller="Messages" asp-action="Details" asp-route-id="@Model.User.Id">Wiadomość</a>
+<a asp-controller="Friends" asp-action="Invite"asp-route-id="@Model.User.Id">Wyślij zaproszenie do znajomych</a>
 <table class="table table-striped">
     <tr>
         <th>Płeć</th>

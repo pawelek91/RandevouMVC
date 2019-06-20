@@ -1,0 +1,35 @@
+﻿@model RandevouMVC.ViewModels.Friends.FriendsMainViewModel
+
+@{ 
+    if(ViewBag.ActionResult!=null)
+    {
+        var result = ViewBag.ActionResult as RandevouMVC.Models.Common.ControllerActionResult;
+        <h4>@result.Message</h4>
+    }
+}
+<h4>Zaproszenia do znajomych</h4>
+<ul>
+    
+    @foreach (var invitation in Model?.FriendshipInvitations)
+    {
+        <li>
+            @invitation.DisplayName
+            <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id">Wyświetl użytkownika</a>
+            <a asp-controller="Friends" asp-action="Accept" asp-route-id="@invitation.Id">Akceptuj</a>
+            <a asp-controller="Friends" asp-action="Decline" asp-route-id="@invitation.Id">Odrzuć</a>
+        </li>
+    }
+</ul>
+
+
+<h4>Znajomi</h4>
+<ul>
+    @foreach (var invitation in Model?.UserFriends)
+    {
+        <li>
+            @invitation.DisplayName
+            <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id">Wyświetl użytkownika</a>
+            <a asp-controller="Friends" asp-action="RemoveFriend" asp-route-id="@invitation.Id">Usuń ze znajomych</a>
+        </li>
+    }
+</ul>

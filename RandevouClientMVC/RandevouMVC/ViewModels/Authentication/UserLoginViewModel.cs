@@ -19,7 +19,5 @@ namespace RandevouMVC.ViewModels
 
         public string LoggedUser { get; set; }
 
-        public string LoginResult { get; set; }
-
     }
 }

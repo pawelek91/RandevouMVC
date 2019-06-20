@@ -27,8 +27,17 @@ namespace RandevouMVC.Models.ApiQueryProvider
 
         public string Login(string username, string password)
         {
+            string key = null;
             var authQuery = queryProvider.GetQueryProvider<IAuthenticationQuery>();
-            var key = authQuery.GetLoginAuthKey(username, password);
+            try
+            {
+                key = authQuery.GetLoginAuthKey(username, password);
+            }
+            catch(RandevouApiCommunication.Exceptions.Unathorized exception)
+            {
+
+            }
+           
             return key;
         }
 

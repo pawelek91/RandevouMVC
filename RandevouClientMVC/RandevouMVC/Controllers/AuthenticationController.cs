@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RandevouMVC.Models.Authentication;
+using RandevouMVC.Models.Common;
 using RandevouMVC.ViewModels;
 
 namespace RandevouMVC.Controllers
@@ -18,8 +19,11 @@ namespace RandevouMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(ControllerActionResult result = null)
         {
+            if (result?.Message != null)
+                ViewBag.OperationResult = result.Message;
+
             var vm = new UserLoginViewModel
             {
                 Login = string.Empty,
@@ -42,8 +46,9 @@ namespace RandevouMVC.Controllers
             string apiKey = _authManager.Login(vm.Login, vm.Password);
             if(string.IsNullOrWhiteSpace(apiKey))
             {
-                vm.LoginResult = "Nie udało się zalogować";
-                return RedirectToAction("Index");
+                var result = new ControllerActionResult { Message = "Nie udało się zalogować" };
+
+                return RedirectToAction("Index", result);
             }
 
             else

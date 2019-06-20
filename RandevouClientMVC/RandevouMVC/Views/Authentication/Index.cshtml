@@ -2,7 +2,10 @@
 
 @{
 
-
+    if(ViewBag.OperationResult != null)
+    { 
+        <p class="border-danger">@ViewBag.OperationResult</p>
+    }
 
 
     if (!string.IsNullOrWhiteSpace(Model.LoggedUser))

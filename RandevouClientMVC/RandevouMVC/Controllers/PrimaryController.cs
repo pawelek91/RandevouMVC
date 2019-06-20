@@ -13,4 +13,10 @@ namespace RandevouMVC.Controllers
         protected string _ApiKey
             => HttpContext.Session.GetString("ApiKey");
     }
+
+    [AuthorizedOnly]
+    public abstract class BusinessController : PrimaryController
+    {
+
+    }
 }

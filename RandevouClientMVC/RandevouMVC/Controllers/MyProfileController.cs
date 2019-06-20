@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.Controllers
 {
-    public class MyProfileController : PrimaryController
+    public class MyProfileController : BusinessController
     {
         readonly IMyProfileManager _manager;
         readonly IDictionaryItemsManager _dictManager;

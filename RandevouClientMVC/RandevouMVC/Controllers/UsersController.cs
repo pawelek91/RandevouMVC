@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.Controllers
 {
-    public class UsersController : PrimaryController
+    public class UsersController : BusinessController
     {
         private readonly IUserManager manager;
 

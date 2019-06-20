@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.Controllers
 {
-    public class MessagesController : PrimaryController
+    public class MessagesController : BusinessController
     {
         private readonly IMessagesManager _manager;
 

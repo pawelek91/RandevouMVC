@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.Controllers
 {
-    public class UsersFinderController : PrimaryController
+    public class UsersFinderController : BusinessController
     {
         private readonly IUsersFinderManager _manager;
         private readonly IDictionaryItemsManager _dictManager;

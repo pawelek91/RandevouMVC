@@ -8,18 +8,13 @@ using RandevouMVC.Models;
 
 namespace RandevouMVC.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BusinessController
     {
         public IActionResult Index()
         {
             return View();
         }
 
-        [AuthorizedAction]
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

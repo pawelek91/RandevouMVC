@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RandevouMVC.Controllers
 {
-    public class AuthorizedActionAttribute : Attribute, IActionFilter
+    public class AuthorizedOnlyAttribute : Attribute, IActionFilter
     {
         public void OnActionExecuted(ActionExecutedContext context)
         {

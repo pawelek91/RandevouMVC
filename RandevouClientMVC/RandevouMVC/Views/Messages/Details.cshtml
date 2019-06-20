@@ -1,5 +1,14 @@
 ﻿@model IEnumerable<RandevouMVC.ViewModels.Messages.ConversationViewModel>
 
+    <div class="col-md-6">
+        @{
+            await Html.RenderPartialAsync("SendMessage",
+                new RandevouMVC.ViewModels.Messages.SendMessageViewModel
+                {
+                    SpeakerId = ViewBag.SpeakerId,
+                });
+        }
+    </div>
 
     <div class="col-md-6" id="conversationDiv">
 
@@ -14,12 +23,3 @@
         </script>
     </div>
 
-<div>
-    @{
-        await Html.RenderPartialAsync("SendMessage",
-            new RandevouMVC.ViewModels.Messages.SendMessageViewModel
-            {
-                SpeakerId = ViewBag.SpeakerId,
-            });
-    }
-</div>

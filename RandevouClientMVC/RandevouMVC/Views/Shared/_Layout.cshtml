@@ -19,44 +19,44 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RandevouMVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <a class="navbar-brand" href="#">RandevouMVC</a>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MyProfile" asp-action="Index">Mój profil</a>
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="MyProfile" asp-action="Index">Mój profil</a>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Messages" asp-action="Index">Wiadomości</a>
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Messages" asp-action="Index">Wiadomości</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Friends" asp-action="Index">Znajomi</a>
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Friends" asp-action="Index">Znajomi</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UsersFinder" asp-action="Index">Wyszukiwarka</a>
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="UsersFinder" asp-action="Index">Wyszukiwarka</a>
+                        </li>
+                    </ul>
+                    <ul class="nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Authentication" asp-action="Index">Logowanie</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Index">Logowanie</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Register">Rejestracja</a>
+                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Authentication" asp-action="Register">Rejestracja</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
     </header>
     <div class="container">
         <main role="main" class="pb-3">

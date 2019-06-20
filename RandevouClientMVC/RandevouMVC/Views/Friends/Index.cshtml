@@ -7,29 +7,32 @@
         <h4>@result.Message</h4>
     }
 }
-<h4>Zaproszenia do znajomych</h4>
-<ul>
-    
+<div class="container">
+    <p class="h5">Zaproszenia do znajomych</p>
+<ul class="list-group list-group-flush">
+
     @foreach (var invitation in Model?.FriendshipInvitations)
     {
-        <li>
+        <li class="list-group-item">
             @invitation.DisplayName
-            <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id">Wyświetl użytkownika</a>
-            <a asp-controller="Friends" asp-action="Accept" asp-route-id="@invitation.Id">Akceptuj</a>
-            <a asp-controller="Friends" asp-action="Decline" asp-route-id="@invitation.Id">Odrzuć</a>
+            <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id" class="btn btn-outline-info" role="button">Wyświetl użytkownika</a>
+            <a asp-controller="Friends" asp-action="Accept" asp-route-id="@invitation.Id" class="btn btn-outline-success" role="button">Akceptuj</a>
+            <a asp-controller="Friends" asp-action="Decline" asp-route-id="@invitation.Id" class="btn btn-outline-danger" role="button">Odrzuć</a>
         </li>
     }
 </ul>
+</div>
+<div class="container" style="margin-top:20px">
 
-
-<h4>Znajomi</h4>
-<ul>
-    @foreach (var invitation in Model?.UserFriends)
-    {
-        <li>
-            @invitation.DisplayName
-            <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id">Wyświetl użytkownika</a>
-            <a asp-controller="Friends" asp-action="RemoveFriend" asp-route-id="@invitation.Id">Usuń ze znajomych</a>
-        </li>
-    }
-</ul>
+    <p class="h5">Znajomi</p>
+        <ul class="list-group list-group-flush">
+            @foreach (var invitation in Model?.UserFriends)
+            {
+                <li class="list-group-item">
+                    @invitation.DisplayName
+                    <a asp-controller="Users" asp-action="Details" asp-route-id="@invitation.Id" class="btn btn-outline-info">Wyświetl użytkownika</a>
+                    <a asp-controller="Friends" asp-action="RemoveFriend" asp-route-id="@invitation.Id" class="btn btn-outline-danger">Usuń ze znajomych</a>
+                </li>
+            }
+        </ul>
+</div>

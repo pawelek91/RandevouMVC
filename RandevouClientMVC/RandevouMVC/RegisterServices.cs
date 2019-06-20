@@ -18,7 +18,8 @@ namespace RandevouMVC
     {
         public static void Register(IServiceCollection services)
         {
-            services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
+            //services.AddSingleton<IApiQueryProvider, ApiQueryProviderMock>();
+            services.AddSingleton<IApiQueryProvider, ApiQueryProvider>();
 
             services.AddSingleton<IAuthenticationManager, AuthenticationManager>();
             services.AddSingleton<IMyProfileManager, MyProfileManager>();

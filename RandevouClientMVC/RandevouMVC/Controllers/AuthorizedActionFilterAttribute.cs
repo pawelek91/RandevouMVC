@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,10 @@ namespace RandevouMVC.Controllers
                 apiKey = session.GetString("ApiKey");
 
             if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                context.Result = new RedirectResult("/Authentication/");
                 context.HttpContext.Response.Redirect("/Authentication/");
+            }
         }
     }
 }

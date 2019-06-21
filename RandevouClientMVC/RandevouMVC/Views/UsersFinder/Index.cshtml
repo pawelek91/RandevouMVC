@@ -23,7 +23,9 @@
             <label asp-for="QueryModel.Gender" class="col-sm-2 col-form-label">Płeć</label>
             <div class="col-sm-10">
                 <select asp-for="QueryModel.Gender" class="custom-select mr-sm-2"
-                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()"></select>
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()">
+                    <option val="">-</option>
+                </select>
             </div>
 
 

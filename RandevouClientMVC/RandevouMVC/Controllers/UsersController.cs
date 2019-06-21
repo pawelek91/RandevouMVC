@@ -16,9 +16,9 @@ namespace RandevouMVC.Controllers
             this.manager = manager;
         }
         [HttpGet]
-        public ViewResult Details(int userId)
+        public ViewResult Details(int id)
         {
-            var vm = manager.GetUserDisplayInfo(userId);
+            var vm = manager.GetUserDisplayInfo(id);
             return View(vm);
         }
     }

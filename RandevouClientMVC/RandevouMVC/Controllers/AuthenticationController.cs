@@ -47,7 +47,6 @@ namespace RandevouMVC.Controllers
             if(string.IsNullOrWhiteSpace(apiKey))
             {
                 var result = new ControllerActionResult { Message = "Nie udało się zalogować" };
-
                 return RedirectToAction("Index", result);
             }
 

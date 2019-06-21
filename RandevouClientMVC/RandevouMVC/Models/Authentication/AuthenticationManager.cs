@@ -27,6 +27,7 @@ namespace RandevouMVC.Models.Authentication
         public UsersDto GetLoggedUser(string apiKey)
         {
             var identity = _queryProvider.GetIdentity(apiKey);
+            _queryProvider.SetUserData(apiKey, identity);
             var user = _queryProvider.GetUser(identity);
             return user;
         }

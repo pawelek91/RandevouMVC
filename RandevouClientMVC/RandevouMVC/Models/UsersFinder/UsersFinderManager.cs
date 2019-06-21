@@ -16,7 +16,8 @@ namespace RandevouMVC.Models.UsersFinder
 
         public IEnumerable<UsersDto> FindUsers(UserFinderQueryViewModel vm)
         {
-            vm.SearchQuery.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
+            if(vm.Gender!=null)
+                vm.SearchQuery.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
             vm.SearchQuery.InterestIds = vm.InterestsDictionary.Where(x => x.Selected).Select(x => x.Id)?.ToArray();
 
             if (vm.Tatoos != Tatoos.Null)

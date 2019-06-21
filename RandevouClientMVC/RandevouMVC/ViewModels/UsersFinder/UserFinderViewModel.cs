@@ -28,7 +28,7 @@ namespace RandevouMVC.ViewModels
         public InterestViewModel[] InterestsDictionary { get; set; }
         public List<SelectListItem> HairColorsDictionary { get; set; }
         public List<SelectListItem> EyesColorsDictionary { get; set; }
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         public Tatoos Tatoos { get; set; }
 

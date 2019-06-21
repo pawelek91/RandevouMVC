@@ -37,21 +37,21 @@ namespace RandevouMVC.Controllers
                             .Select(x =>
                             new InterestViewModel(x)).ToArray();
 
-            vm.QueryModel.HairColorsDictionary = _dictManager.GetAllHairsColors().Select(x => new SelectListItem
+            vm.QueryModel.HairColorsDictionary = new List<SelectListItem>() { emptyElement };
+            vm.QueryModel.HairColorsDictionary.AddRange(_dictManager.GetAllHairsColors().Select(x => new SelectListItem
             {
                 Text = x.DisplayName,
                 Value = x.Id.ToString(),
-            }).ToList();
-
-            vm.QueryModel.HairColorsDictionary.Add(emptyElement);
+            }).ToList());
 
 
-            vm.QueryModel.EyesColorsDictionary = _dictManager.GetAllEyesColors().Select(x => new SelectListItem
+
+            vm.QueryModel.EyesColorsDictionary = new List<SelectListItem>() { emptyElement };
+            vm.QueryModel.EyesColorsDictionary.AddRange(_dictManager.GetAllEyesColors().Select(x => new SelectListItem
             {
                 Text = x.DisplayName,
                 Value = x.Id.ToString(),
-            }).ToList();
-            vm.QueryModel.EyesColorsDictionary.Add(emptyElement);
+            }).ToList());
 
             return View(vm);
         }

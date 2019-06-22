@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,6 +27,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                     <a class="navbar-brand" href="#">RandevouMVC</a>
+
+                    <!-- BUSINESS-->
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         <li class="nav-item">
                             <a class="btn btn-outline-primary" asp-area="" asp-controller="MyProfile" asp-action="Index">Mój profil</a>
@@ -44,14 +47,28 @@
                             <a class="btn btn-outline-primary" asp-area="" asp-controller="UsersFinder" asp-action="Index">Wyszukiwarka</a>
                         </li>
                     </ul>
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="btn btn-light" asp-area="" asp-controller="Authentication" asp-action="Index">Logowanie</a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Authentication" asp-action="Register">Rejestracja</a>
-                        </li>
+                    <!-- AUTHENTICATION  -->
+                    <ul class="nav justify-content-end">
+                        @{
+                            var session = Context.Session.GetString("ApiKey");
+                            if (string.IsNullOrWhiteSpace(session))
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-light" asp-area="" asp-controller="Authentication" asp-action="Index">Logowanie</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link text-light nav-pills" asp-area="" asp-controller="Authentication" asp-action="Register">Rejestracja</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-light" asp-area="" asp-controller="Authentication" asp-action="Logout">Wyloguj</a>
+                                </li>
+                            }
+                        }
                     </ul>
                 </div>
             </div>

@@ -9,6 +9,12 @@ namespace RandevouMVC.Models.Common
     {
         public const string Accept = nameof(Accept);
         public const string Delete = nameof(Delete);
+    }
 
+    public enum FriendshipStatus
+    {
+        ExistsAsFriend,
+        ReceivedInvitation,
+        None,
     }
 }

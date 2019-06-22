@@ -1,6 +1,8 @@
 ﻿@model  RandevouMVC.ViewModels.MyProfileViewModel
 
     <form asp-controller="MyProfile" asp-action="update" method="post" class="mt-3">
+        <input type="hidden" asp-for="UserDto.Id" />
+
         <div class="form-group row">
             <label asp-for="UserDto.DisplayName" class="col-sm-2 col-form-label">Nazwa</label>
             <div class="col-sm-10">
@@ -17,8 +19,9 @@
         <div class="form-group row">
             <label asp-for="UserDto.Gender" class="col-sm-2 col-form-label">Płeć</label>
             <div class="col-sm-10">
-                <select asp-for="UserDto.Gender" class="custom-select mr-sm-2"
-                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()"></select>
+                <select asp-for="Gender" class="custom-select mr-sm-2"
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()">
+                </select>
             </div>
 
 
@@ -81,16 +84,18 @@
             <label asp-for="UserDetails.Interests" class="col-sm-2 col-form-label">Zainteresowania</label>
             <div class="col-sm-10">
                 <ul>
-                    <li>
-                        @for (int i = 0; i < Model.InterestsDictionary.Count(); i++)
-                        {
+
+                    @for (int i = 0; i < Model.InterestsDictionary.Count(); i++)
+                    {
+                        <li>
                             <input type="checkbox" asp-for="@Model.InterestsDictionary[i].Selected" />
                             <label asp-for="@Model.InterestsDictionary[i].Id">@Model.InterestsDictionary[i].DisplayName</label>
                             <input type="hidden" asp-for="@Model.InterestsDictionary[i].Id" />
                             <input type="hidden" asp-for="@Model.InterestsDictionary[i].DisplayName" />
-                        }
-                    </li>
-                </ul>
+                        </li>
+                    }
+                    
+                    </ul>
             </div>
         </div>
 

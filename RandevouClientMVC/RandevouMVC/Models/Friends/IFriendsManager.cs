@@ -1,4 +1,5 @@
 ﻿using RandevouApiCommunication.Users;
+using RandevouMVC.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace RandevouMVC.Models.Friends
         void AcceptFriendshipInvitation(int userId);
         void RejectFriendshipInvitation(int userId);
         void RemoveFriend(int friendId);
+
+        FriendshipStatus GetFriendshipStatus(int userId);
 
 
 

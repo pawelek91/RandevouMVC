@@ -1,8 +1,22 @@
 ﻿@model RandevouMVC.ViewModels.Users.UserComplexViewModel
 <h2>@Model.User.DisplayName</h2>
 
-<a asp-controller="Messages" asp-action="Details" asp-route-id="@Model.User.Id">Wiadomość</a>
-<a asp-controller="Friends" asp-action="Invite"asp-route-id="@Model.User.Id">Wyślij zaproszenie do znajomych</a>
+<a asp-controller="Messages" asp-action="Details" asp-route-id="@Model.User.Id" class="btn btn-outline-primary">Wiadomość</a>
+
+
+@{
+    switch (Model.FriendshipStatus)
+    {
+        case FriendshipStatus.ExistsAsFriend: <p class="font-weight-light">Twój znajomy</p> break;
+
+        case FriendshipStatus.ReceivedInvitation: <p class="font-weight-light"> Otrzymałeś zaproszenie do znajomych</p> break;
+case FriendshipStatus.None:
+    <a asp-controller="Friends" asp-action="Invite" asp-route-id="@Model.User.Id" class="btn btn-outline-secondary">Wyślij zaproszenie do znajomych</a> break;
+default: break;
+
+}
+}
+
 <table class="table table-striped">
     <tr>
         <th>Płeć</th>
@@ -37,19 +51,19 @@
     <tr>
         <th>Zainteresowania</th>
         <td>
-                @for (int i = 0; i < Model.Details.Interests.Count(); i++)
+            @for (int i = 0; i < Model.Details.Interests.Count(); i++)
+            {
+
+                if (i < Model.Details.Interests.Count() - 1)
                 {
-
-                    if (i < Model.Details.Interests.Count() - 1)
-                    {
-                        @string.Format("{0},", Model.Details.Interests[i])
-                    }
-                    else
-                    {
-                        @Model.Details.Interests[i]
-                    }
-
+                    @string.Format("{0},", Model.Details.Interests[i])
                 }
+                else
+                {
+                    @Model.Details.Interests[i]
+                }
+
+            }
         </td>
     </tr>
 

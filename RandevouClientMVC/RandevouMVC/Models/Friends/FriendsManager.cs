@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using RandevouApiCommunication.Users;
 using RandevouMVC.Models.ApiQueryProvider;
+using RandevouMVC.Models.Common;
 
 namespace RandevouMVC.Models.Friends
 {
@@ -43,6 +44,16 @@ namespace RandevouMVC.Models.Friends
         public void RemoveFriend(int friendId)
         {
             _queryProvider.RemoveFriend(friendId);
+        }
+
+        public FriendshipStatus GetFriendshipStatus(int userId)
+        {
+            if (GetUserFriends().Any(x => x.Id == userId))
+                return FriendshipStatus.ExistsAsFriend;
+            if(GetFriendsInvitations().Any(x=>x.Id == userId))
+                return FriendshipStatus.ReceivedInvitation;
+
+            return FriendshipStatus.None;
         }
     }
 }

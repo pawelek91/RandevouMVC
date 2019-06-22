@@ -18,12 +18,18 @@ namespace RandevouMVC.Models.MyProfile
             var dto = _queryProvider.GetMyProfileUser();
             var detailsDto = _queryProvider.GetUserDetails(dto.Id.Value);
 
+           
             var vm = new MyProfileViewModel
             {
                 UserDetails = detailsDto,
                 UserDto = dto,
+                
             };
 
+            vm.Gender = null;
+            if (dto.Gender.HasValue)
+                vm.Gender = dto.Gender == 'f' ? Gender.Female : Gender.Male;
+            
 
             if (dto.BirthDate.HasValue)
                 vm.BirthDate = dto.BirthDate.Value;
@@ -33,7 +39,9 @@ namespace RandevouMVC.Models.MyProfile
 
         public void SetProfileData(MyProfileViewModel vm)
         {
-            vm.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
+            if(vm.Gender.HasValue)
+                vm.UserDto.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
+
             vm.UserDto.BirthDate = vm.BirthDate;
             vm.UserDetails.Interests = vm.InterestsDictionary
                 .Where(x => x.Selected)

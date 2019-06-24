@@ -51,6 +51,11 @@ namespace RandevouMVC.Models.Users
                 vm.Details.Interests = new string[0];
             }
 
+            if (ud.AvatarImage != null && ud.AvatarImage.Length > 0 && !string.IsNullOrWhiteSpace(ud.AvatarContentType))
+            {
+                string base64String = Convert.ToBase64String(ud.AvatarImage, 0, ud.AvatarImage.Length);
+                vm.Details.ImageStr = string.Format("data:{0};base64,{1}", ud.AvatarContentType, base64String);
+            }
             return vm;
         }
 

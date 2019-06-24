@@ -5,18 +5,27 @@
             <input type="file" asp-for="NewAvatar" />
             <button type="submit" class="btn btn-primary">Zapisz avatar</button>
         </div>
-</form>
+        <div style="width:200px; height:100px">
+            <input type="hidden" asp-for="UserDto.Id" />
+            <div class="form-group row" style="width:100px;height:100px">
+                <input type="hidden" asp-for="UserDto.Id" />
+                @{
+                    if (!String.IsNullOrWhiteSpace(Model.ImageStr))
+                    {
+                        <div class="form-group row">
+                            <img src="@Model.ImageStr" style="height: 100%; width: 100%; object-fit: scale-down;" />
+                        </div>
+                    }
+                }
+            </div>
+
+
+        </div>
+    </form>
+<hr/>
     <form asp-controller="MyProfile" asp-action="update" method="post" class="mt-3">
         <input type="hidden" asp-for="UserDto.Id" />
-
-        @{ 
-            if(!String.IsNullOrWhiteSpace(Model.ImageStr))
-            {
-                 <div class="form-group row">
-                     <img src="@Model.ImageStr" />
-                 </div>
-            }
-        }
+    
         <div class="form-group row">
             <label asp-for="UserDto.DisplayName" class="col-sm-2 col-form-label">Nazwa</label>
             <div class="col-sm-10">
@@ -34,8 +43,7 @@
             <label asp-for="UserDto.Gender" class="col-sm-2 col-form-label">Płeć</label>
             <div class="col-sm-10">
                 <select asp-for="Gender" class="custom-select mr-sm-2"
-                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()">
-                </select>
+                        asp-items="Html.GetEnumSelectList<RandevouMVC.ViewModels.Gender>()"></select>
             </div>
 
 
@@ -108,11 +116,11 @@
                             <input type="hidden" asp-for="@Model.InterestsDictionary[i].DisplayName" />
                         </li>
                     }
-                    
-                    </ul>
+
+                </ul>
             </div>
         </div>
 
 
-            <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+        <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
     </form>

@@ -27,5 +27,7 @@ namespace RandevouMVC.ViewModels.Users
 
         [Display(Name = "Waga")]
         public int? Weight { get; set; }
+
+        public string ImageStr { get; set; }
     }
 }

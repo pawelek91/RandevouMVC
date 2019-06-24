@@ -16,9 +16,12 @@ namespace RandevouMVC.Controllers
             this.manager = manager;
         }
         [HttpGet]
-        public ViewResult Details(int id)
+        public IActionResult Details(int id)
         {
+            var user = LoggedUserName;
             var vm = manager.GetUserDisplayInfo(id);
+            if (vm.User.DisplayName.Equals(LoggedUserName, StringComparison.CurrentCultureIgnoreCase))
+                return RedirectToAction("Index", "MyProfile");
             return View(vm);
         }
     }

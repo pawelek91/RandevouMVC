@@ -54,7 +54,7 @@ namespace RandevouMVC.Controllers
             {
                 HttpContext.Session.SetString("ApiKey", apiKey);
                 vm.LoggedUser = _authManager.GetLoggedUser(_ApiKey)?.Name;
-
+                HttpContext.Session.SetString("UserName", vm.LoggedUser);
                 return View("Index", vm);
             }
         }

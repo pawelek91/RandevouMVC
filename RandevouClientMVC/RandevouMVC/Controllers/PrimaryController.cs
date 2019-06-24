@@ -17,6 +17,7 @@ namespace RandevouMVC.Controllers
     [AuthorizedOnly]
     public abstract class BusinessController : PrimaryController
     {
-
+        public virtual string LoggedUserName
+            => HttpContext.Session.GetString("UserName");
     }
 }

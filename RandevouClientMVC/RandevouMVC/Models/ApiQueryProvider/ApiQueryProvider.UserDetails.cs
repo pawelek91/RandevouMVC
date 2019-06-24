@@ -1,6 +1,8 @@
-﻿using RandevouApiCommunication.Users.DictionaryValues;
+﻿using RandevouApiCommunication.Users;
+using RandevouApiCommunication.Users.DictionaryValues;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,5 +30,5 @@ namespace RandevouMVC.Models.ApiQueryProvider
             var result = udQuery.GetInterests(_apiKey);
             return result;
         }
-    }
+  }
 }

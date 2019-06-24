@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using RandevouMVC.Models.ApiQueryProvider;
@@ -34,7 +35,21 @@ namespace RandevouMVC.Models.MyProfile
             if (dto.BirthDate.HasValue)
                 vm.BirthDate = dto.BirthDate.Value;
 
+            if(detailsDto.AvatarImage != null && detailsDto.AvatarImage.Length >0 && !string.IsNullOrWhiteSpace(detailsDto.AvatarContentType))
+            {
+                string base64String = Convert.ToBase64String(detailsDto.AvatarImage, 0, detailsDto.AvatarImage.Length);
+                vm.ImageStr = string.Format("data:{0};base64,{1}", detailsDto.AvatarContentType, base64String);
+            }
             return vm;
+        }
+
+        public void SetAvatar(MyProfileViewModel vm)
+        {
+            var stream = new MemoryStream();
+            vm.NewAvatar.CopyTo(stream);
+            string content = vm.NewAvatar.ContentType;
+            _queryProvider.SetAvatar(stream, content);
+            stream.Dispose();
         }
 
         public void SetProfileData(MyProfileViewModel vm)

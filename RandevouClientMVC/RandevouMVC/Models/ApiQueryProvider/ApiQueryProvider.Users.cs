@@ -1,7 +1,9 @@
-﻿using RandevouApiCommunication.Users;
+﻿using Microsoft.AspNetCore.Http;
+using RandevouApiCommunication.Users;
 using RandevouApiCommunication.UsersFinder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -59,6 +61,12 @@ namespace RandevouMVC.Models.ApiQueryProvider
             var queryFinder = queryProvider.GetQueryProvider<IUserFinderQuery>();
             var result = queryFinder.FindUsers(dto, _apiKey);
             return result;
+        }
+
+        public void SetAvatar(Stream fStream, string contentType)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            usersQuery.SetAvatar(_userId, fStream, contentType, _apiKey);
         }
 
     }

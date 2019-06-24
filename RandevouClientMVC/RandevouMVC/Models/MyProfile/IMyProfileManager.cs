@@ -11,5 +11,7 @@ namespace RandevouMVC.Models.MyProfile
     {
         MyProfileViewModel GetMyProfileVM();
         void SetProfileData(MyProfileViewModel vm);
+
+        void SetAvatar(MyProfileViewModel vm);
     }
 }

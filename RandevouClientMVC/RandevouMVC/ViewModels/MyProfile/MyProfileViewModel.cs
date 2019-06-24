@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RandevouApiCommunication.Users;
 using RandevouApiCommunication.Users.DictionaryValues;
 using RandevouMVC.ViewModels.Common;
@@ -28,5 +29,9 @@ namespace RandevouMVC.ViewModels
 
         [Display(Name="Płeć")]
         public Gender? Gender { get; set; }
+
+        public string ImageStr { get; set; }
+
+        public IFormFile NewAvatar { get; set; }
     }
 }

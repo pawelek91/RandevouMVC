@@ -63,5 +63,12 @@ namespace RandevouMVC.Controllers
             _manager.SetProfileData(vm);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult SetAvatar(MyProfileViewModel vm)
+        {
+            _manager.SetAvatar(vm);
+            return RedirectToAction("Index");
+        }
     }
 }

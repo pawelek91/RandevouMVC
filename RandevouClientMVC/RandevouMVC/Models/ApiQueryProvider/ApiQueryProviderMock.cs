@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using RandevouApiCommunication.Messages;
@@ -205,6 +206,11 @@ namespace RandevouMVC.Models.ApiQueryProvider
         }
 
         public void SendMessage(int receiverId, string content)
+        {
+            return;
+        }
+
+        public void SetAvatar(Stream fStream, string contentType)
         {
             return;
         }

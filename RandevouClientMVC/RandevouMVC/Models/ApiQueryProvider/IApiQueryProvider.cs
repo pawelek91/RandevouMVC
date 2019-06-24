@@ -4,6 +4,7 @@ using RandevouApiCommunication.Users.DictionaryValues;
 using RandevouApiCommunication.UsersFinder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -46,6 +47,8 @@ namespace RandevouMVC.Models.ApiQueryProvider
         void UpdateMyProfileUserBasic(UsersDto dto);
         IEnumerable<UsersDto> GetManyUsers(int[] ids);
         IEnumerable<int> FindUsers(SearchQueryDto dto);
+
+        void SetAvatar(Stream fStream, string contentType);
         #endregion
 
 

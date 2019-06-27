@@ -49,6 +49,8 @@ namespace RandevouMVC.Models.ApiQueryProvider
         IEnumerable<int> FindUsers(SearchQueryDto dto);
 
         void SetAvatar(Stream fStream, string contentType);
+
+        IEnumerable<UserAvatarDto> GetUsersAvatars(IEnumerable<int> usersIds);
         #endregion
 
 

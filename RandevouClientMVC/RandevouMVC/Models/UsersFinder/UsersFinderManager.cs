@@ -1,6 +1,7 @@
 ﻿using RandevouApiCommunication.Users;
 using RandevouMVC.Models.ApiQueryProvider;
 using RandevouMVC.ViewModels;
+using RandevouMVC.ViewModels.UsersFinder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace RandevouMVC.Models.UsersFinder
         {
         }
 
-        public IEnumerable<UsersDto> FindUsers(UserFinderQueryViewModel vm)
+        public IEnumerable<UsersFinderResultViewModel> FindUsers(UserFinderQueryViewModel vm)
         {
             if(vm.Gender!=null)
                 vm.SearchQuery.Gender = vm.Gender == Gender.Male ? 'm' : 'f';
@@ -25,7 +26,21 @@ namespace RandevouMVC.Models.UsersFinder
 
             var ids = _queryProvider.FindUsers(vm.SearchQuery);
             var users = _queryProvider.GetManyUsers(ids.ToArray());
-            return users;
+
+            var avatars = _queryProvider.GetUsersAvatars(ids);
+
+            var result = new List<UsersFinderResultViewModel>();
+            foreach(var user in users)
+            {
+                var avatarInfo = avatars.Where(x => x.UserId == user.Id).FirstOrDefault();
+                result.Add(new UsersFinderResultViewModel
+                {
+                    UserBasicDto = new ViewModels.Users.UserComplexViewModel() { User = new UserBasicViewModel(user) },
+                    AvatarContentBytes = avatarInfo?.AvatarContentBytes ?? new byte[0],
+                    AvatarContentType = avatarInfo?.AvatarContentType ?? string.Empty,
+                });
+            }
+            return result;
         }
     }
 }

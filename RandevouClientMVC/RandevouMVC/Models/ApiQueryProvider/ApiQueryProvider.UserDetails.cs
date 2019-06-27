@@ -30,5 +30,12 @@ namespace RandevouMVC.Models.ApiQueryProvider
             var result = udQuery.GetInterests(_apiKey);
             return result;
         }
-  }
+
+        public IEnumerable<UserAvatarDto> GetUsersAvatars(IEnumerable<int> usersIds)
+        {
+            var usersQuery = queryProvider.GetQueryProvider<IUsersQuery>();
+            var result = usersQuery.GetUsersAvatars(usersIds, _apiKey);
+            return result;
+        }
+    }
 }

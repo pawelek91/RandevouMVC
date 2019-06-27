@@ -185,6 +185,11 @@ namespace RandevouMVC.Models.ApiQueryProvider
             };
         }
 
+        public IEnumerable<UserAvatarDto> GetUsersAvatars(IEnumerable<int> usersIds)
+        {
+            return new UserAvatarDto[0];
+        }
+
         public string Login(string username, string password)
         {
             return "a";
